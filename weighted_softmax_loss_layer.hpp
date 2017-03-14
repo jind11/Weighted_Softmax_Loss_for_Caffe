@@ -1,5 +1,5 @@
-#ifndef CAFFE_SOFTMAX_WITH_LOSS_LAYER_HPP_
-#define CAFFE_SOFTMAX_WITH_LOSS_LAYER_HPP_
+#ifndef CAFFE_WEIGHTED_SOFTMAX_WITH_LOSS_LAYER_HPP_
+#define CAFFE_WEIGHTED_SOFTMAX_WITH_LOSS_LAYER_HPP_
 
 #include <vector>
 
@@ -7,7 +7,7 @@
 #include "caffe/layer.hpp"
 #include "caffe/proto/caffe.pb.h"
 
-#include "caffe/layers/loss_layer.hpp"
+#include "caffe/layers/weighted_loss_layer.hpp"
 #include "caffe/layers/softmax_layer.hpp"
 
 namespace caffe {
@@ -42,7 +42,7 @@ namespace caffe {
  *      @f$, for softmax output class probabilites @f$ \hat{p} @f$
  */
 template <typename Dtype>
-class WeightedSoftmaxWithLossLayer : public LossLayer<Dtype> {
+class WeightedSoftmaxWithLossLayer : public WeightedLossLayer<Dtype> {
  public:
    /**
     * @param param provides LossParameter loss_param, with options:
@@ -53,7 +53,7 @@ class WeightedSoftmaxWithLossLayer : public LossLayer<Dtype> {
     *    present; otherwise the loss is simply summed over spatial locations.
     */
   explicit WeightedSoftmaxWithLossLayer(const LayerParameter& param)
-      : LossLayer<Dtype>(param) {}
+      : WeightedLossLayer<Dtype>(param) {}
   virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
@@ -128,4 +128,4 @@ class WeightedSoftmaxWithLossLayer : public LossLayer<Dtype> {
 
 }  // namespace caffe
 
-#endif  // CAFFE_SOFTMAX_WITH_LOSS_LAYER_HPP_
+#endif  // CAFFE_WEIGHTED_SOFTMAX_WITH_LOSS_LAYER_HPP_
