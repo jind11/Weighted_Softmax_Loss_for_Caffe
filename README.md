@@ -22,6 +22,8 @@ layer {
 }
 ```
 
+(4). If you want to use "ImageData" layer to directly upload images data (e.g., png,jpg and tif formats) and want to have only one top blob, you can use the files named "single_image_data_layer.hpp" and "single_image_data_layer.cpp".
+
 ## Note
 Files named "weighted_loss_layer.hpp" and "weighted_loss_layer.cpp" are revised versions of the original "loss_layer.hpp" and "loss_layer.cpp" files so that they can accept three bottom blobs.
 
